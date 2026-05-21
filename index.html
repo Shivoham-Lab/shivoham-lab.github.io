@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shivoham Lab is an independent research lab building open-source tools, AI systems, and real-world developer products." />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>Shivoham Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07090c;
+      --bg-elevated: rgba(16, 19, 24, 0.88);
+      --bg-soft: rgba(255, 255, 255, 0.04);
+      --text: #e7ebf1;
+      --muted: #9aa3b2;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #e8a045;
+      --accent-strong: #ffb35c;
+      --accent-soft: rgba(232, 160, 69, 0.14);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --max-width: 1180px;
+      --nav-height: 74px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 18px);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(232, 160, 69, 0.16), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(255, 179, 92, 0.08), transparent 22%),
+        linear-gradient(180deg, #090b0f 0%, #07090c 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 85%);
+      opacity: 0.35;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent-strong);
+      background: rgba(255, 255, 255, 0.02);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 12px 0 0;
+      font-size: clamp(1.8rem, 2.8vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .section p.lead {
+      margin: 10px 0 0;
+      max-width: 68ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 8, 11, 0.74);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(232, 160, 69, 0.2), rgba(232, 160, 69, 0.05));
+      border: 1px solid rgba(232, 160, 69, 0.25);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      color: var(--accent-strong);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      letter-spacing: -0.08em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-text span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      transition: all 180ms ease;
+      border: 1px solid transparent;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+      border-color: rgba(232, 160, 69, 0.22);
+      background: rgba(232, 160, 69, 0.09);
+      box-shadow: 0 0 0 1px rgba(232, 160, 69, 0.06) inset;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 96px 0 52px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-aside,
+    .panel,
+    .card,
+    .post,
+    .stat,
+    .team-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: '';
+      position: absolute;
+      inset: auto -100px -100px auto;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(232, 160, 69, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
+    .kicker::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 6.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      max-width: 12ch;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent-strong);
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+      color: #19140d;
+      font-weight: 700;
+      box-shadow: 0 14px 35px rgba(232, 160, 69, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .stat .label {
+      display: block;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .hero-aside {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .asidesurface {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: linear-gradient(180deg, rgba(11, 14, 18, 0.9), rgba(8, 10, 13, 0.9));
+      padding: 20px;
+    }
+
+    .mono-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-strong);
+      margin-bottom: 12px;
+    }
+
+    .statement {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .chip::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(232, 160, 69, 0.12);
+    }
+
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px 0;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 24px;
+      padding-left: 18px;
+      animation: scroll 28s linear infinite;
+      will-change: transform;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .ticker-track span {
+      color: var(--text);
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .panel,
+    .card,
+    .post,
+    .team-card,
+    .contact-card {
+      padding: 22px;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .panel:hover,
+    .card:hover,
+    .post:hover,
+    .team-card:hover,
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 160, 69, 0.22);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    }
+
+    .panel h3,
+    .card h3,
+    .post h3,
+    .team-card h3,
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p,
+    .card p,
+    .post p,
+    .team-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      background: rgba(232, 160, 69, 0.08);
+      color: #f3d2a5;
+      border: 1px solid rgba(232, 160, 69, 0.14);
+    }
+
+    .meta-line {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .meta-line .small {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .link-inline {
+      color: var(--accent-strong);
+      font-weight: 600;
+      transition: opacity 160ms ease;
+    }
+
+    .link-inline:hover {
+      opacity: 0.85;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      display: grid;
+      gap: 8px;
+    }
+
+    .timeline-item header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+
+    .timeline-item strong {
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-item time,
+    .timeline-item .venue {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-strong);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .team-meta,
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      line-height: 1.5;
+      flex-wrap: wrap;
+    }
+
+    .info-row b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(232, 160, 69, 0.2), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(232, 160, 69, 0.2);
+      color: var(--accent-strong);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
+    .team-head,
+    .contact-head {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .field input {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      min-height: 48px;
+      padding: 0 14px;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .field input:focus {
+      border-color: rgba(232, 160, 69, 0.35);
+      box-shadow: 0 0 0 3px rgba(232, 160, 69, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .fineprint {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      color: var(--muted);
+      transition: color 160ms ease;
+    }
+
+    .socials a:hover {
+      color: var(--accent-strong);
+    }
+
+    .mobile-nav-shell {
+      display: contents;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+      margin: 0 auto;
+      width: min(100%, 1180px);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-copy {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --nav-height: 68px;
+      }
+
+      .nav-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .mobile-nav-shell {
+        position: fixed;
+        inset: var(--nav-height) 0 auto 0;
+        background: rgba(6, 8, 11, 0.96);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 16px 18px;
+        transform: translateY(-6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .mobile-nav-shell.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+
+      .nav a {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero h1 {
+        max-width: 9ch;
+      }
+
+      .hero-copy,
+      .hero-aside,
+      .panel,
+      .card,
+      .post,
+      .team-card,
+      .contact-card {
+        border-radius: 22px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-header {
+        align-items: start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home" aria-label="Shivoham Lab home">
+        <div class="brand-mark">SL</div>
+        <div class="brand-text">
+          <strong>Shivoham Lab</strong>
+          <span>Indie research lab</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="siteNav">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <div class="mobile-nav-shell" id="mobileNavShell">
+        <nav class="nav" id="siteNav">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#research">Research</a>
+          <a href="#team">Team</a>
+          <a href="#updates">Updates</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Independent · Open source first · Build in public</div>
+          <h1>Building at the edge of <span class="accent">AI</span>, systems, and real-world problems.</h1>
+          <p>
+            Shivoham Lab is an independent research lab founded by Shouraya, a Computer Science undergrad at MIT Bengaluru
+            (2024–2028). The lab explores practical AI, systems engineering, and developer tools with an open-source default.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Join / Collaborate</a>
+          </div>
+
+          <div class="hero-meta" aria-label="Lab highlights">
+            <div class="stat">
+              <span class="label">Focus</span>
+              <strong>AI tools, web apps, systems</strong>
+              <span>Practical software for people who build and ship.</span>
+            </div>
+            <div class="stat">
+              <span class="label">Stack</span>
+              <strong>Python · C++ · React</strong>
+              <span>Also Flask, PyTorch, Cloudflare Workers, Firebase, PostgreSQL.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Lab snapshot">
+          <div class="asidesurface">
+            <div class="mono-label">Shivoham</div>
+            <p class="statement">
+              शिवोऽहम् means “I am Shiv” in Sanskrit. The name reflects a lab mindset rooted in clarity, discipline,
+              and building useful things in the open.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Open source first</span>
+              <span class="chip">Research + shipping</span>
+              <span class="chip">Indie lab</span>
+            </div>
+          </div>
+
+          <div class="ticker" aria-hidden="true">
+            <div class="ticker-track">
+              <span>AI/ML</span><span>Systems</span><span>Developer Tools</span><span>Open Source</span><span>Real-world Problems</span><span>AI/ML</span><span>Systems</span><span>Developer Tools</span><span>Open Source</span><span>Real-world Problems</span>
+            </div>
+          </div>
+
+          <div class="asidesurface">
+            <div class="mono-label">Research posture</div>
+            <p class="statement">
+              Publish when it matters, build when it helps, and keep the work reproducible, maintainable, and useful to
+              others.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">About</div>
+            <h2>What Shivoham Lab is, and why it exists.</h2>
+          </div>
+          <p class="lead">
+            The lab is designed to move fast without becoming generic: a place for focused research, concrete systems,
+            and open tools that solve real problems.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel">
+            <h3>Independent by design</h3>
+            <p>
+              Shivoham Lab is not a corporate R&amp;D arm. It is a small, founder-led lab built to explore ideas that can
+              be shipped, tested, and shared in public.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>Meaning of Shivoham</h3>
+            <p>
+              Shivoham (शिवोऽहम्) is Sanskrit for “I am Shiv.” Here it signals a disciplined builder identity: clear
+              intent, calm execution, and useful output.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>Founder profile</h3>
+            <p>
+              Founded by Shouraya, a CS undergrad at MIT Bengaluru (2024–2028). At the lab, Shouraya works as Founder &amp;
+              Builder, shaping projects from concept to release.
+            </p>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <article class="panel">
+            <h3>Mission</h3>
+            <p>
+              Build open-source tools, research software, and infrastructure that make AI and systems work in the real
+              world. The emphasis is on practical value, clean engineering, and long-lived code.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Open source</span>
+              <span class="tag">Build in public</span>
+              <span class="tag">Practical AI</span>
+              <span class="tag">Systems thinking</span>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>Working style</h3>
+            <p>
+              The lab prefers small, high-leverage products with well-documented interfaces, thoughtful defaults, and a
+              strong bias toward solving problems users actually have.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Reproducible</span>
+              <span class="tag">Editable placeholders</span>
+              <span class="tag">Real-world use cases</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Projects</div>
+            <h2>Products and systems the lab is building.</h2>
+          </div>
+          <p class="lead">
+            Replace the placeholder links and descriptions as projects evolve. The structure is intentionally simple so it
+            can scale from one-person prototypes to maintained open-source releases.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="mono-label">AI / Infra</div>
+            <h3>Protocol-C</h3>
+            <p>
+              A Cloudflare Workers privacy layer for AI-facing traffic, designed to reduce data exposure while keeping
+              request routing fast and deployable at the edge.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Cloudflare Workers</span>
+              <span class="tag">Privacy</span>
+              <span class="tag">Edge systems</span>
+            </div>
+            <div class="meta-line">
+              <span class="small">Status: active prototype</span>
+              <a class="link-inline" href="#contact">Request access</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="mono-label">AI / Memory</div>
+            <h3>Memex</h3>
+            <p>
+              An MCP-based persistent memory server for AI workflows. Built for agents and assistants that need long-term
+              context, retrieval, and structured recall.
+            </p>
+            <div class="tag-list">
+              <span class="tag">MCP</span>
+              <span class="tag">Persistence</span>
+              <span class="tag">AI tooling</span>
+            </div>
+            <div class="meta-line">
+              <span class="small">Status: open-source core</span>
+              <a class="link-inline" href="#research">Read related work</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="mono-label">Community / Media</div>
+            <h3>Jugni</h3>
+            <p>
+              A self-hosted community music streaming app. The goal is to give small communities a simple, privacy-aware
+              way to share and play music without platform lock-in.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Self-hosted</span>
+              <span class="tag">Community app</span>
+              <span class="tag">Web platform</span>
+            </div>
+            <div class="meta-line">
+              <span class="small">Status: design + build phase</span>
+              <a class="link-inline" href="#contact">Join build</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Research</div>
+            <h2>Selected papers and publications.</h2>
+          </div>
+          <p class="lead">
+            Replace these entries with final citations, DOI links, and preprint URLs. The cards are formatted for easy
+            editing and strong legibility on dark backgrounds.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <header>
+              <strong>Memex: Persistent Memory for Long-Horizon AI Workflows</strong>
+              <time>2026</time>
+            </header>
+            <div class="venue">Workshop / preprint</div>
+            <p>
+              A systems-oriented approach to storing, retrieving, and governing agent memory across tasks, sessions, and
+              tools.
+            </p>
+            <a class="link-inline" href="#" aria-label="Placeholder link for Memex paper">Replace with paper link</a>
+          </article>
+
+          <article class="timeline-item">
+            <header>
+              <strong>Protocol-C: Privacy Controls for Edge AI Requests</strong>
+              <time>2025</time>
+            </header>
+            <div class="venue">Conference / workshop</div>
+            <p>
+              A compact edge middleware design for minimizing sensitive data leakage in AI request pipelines while keeping
+              latency low.
+            </p>
+            <a class="link-inline" href="#" aria-label="Placeholder link for Protocol-C paper">Replace with paper link</a>
+          </article>
+
+          <article class="timeline-item">
+            <header>
+              <strong>Lightweight Community Media Systems for Self-Hosted Networks</strong>
+              <time>2025</time>
+            </header>
+            <div class="venue">Systems / applied research</div>
+            <p>
+              A study of resilient, self-hosted media delivery with emphasis on usability, moderation, and deployment
+              simplicity for small communities.
+            </p>
+            <a class="link-inline" href="#" aria-label="Placeholder link for community media paper">Replace with paper link</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Team</div>
+            <h2>The founder-led core, plus space to collaborate.</h2>
+          </div>
+          <p class="lead">
+            The lab is intentionally small. One founder, one operating style, and room for contributors who want to work
+            on serious open-source systems.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="team-card">
+            <div class="team-head">
+              <div class="avatar" aria-hidden="true">S</div>
+              <div>
+                <div class="mono-label">Founder &amp; Builder</div>
+                <h3>Shouraya</h3>
+              </div>
+            </div>
+            <p>
+              Also known as Shivoham. CS undergrad at MIT Bengaluru (2024–2028) and the person driving product, research,
+              and engineering at the lab.
+            </p>
+            <div class="team-meta">
+              <div class="info-row"><b>Role</b><span>Founder &amp; Builder</span></div>
+              <div class="info-row"><b>Focus</b><span>AI, systems, products, open source</span></div>
+              <div class="info-row"><b>Location</b><span>Bengaluru, India</span></div>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-head">
+              <div class="avatar" aria-hidden="true">?</div>
+              <div>
+                <div class="mono-label">Open slot</div>
+                <h3>Collaborator wanted</h3>
+              </div>
+            </div>
+            <p>
+              Looking for contributors who can help with frontend polish, infra engineering, research validation, or AI
+              tooling experiments.
+            </p>
+            <div class="team-meta">
+              <div class="info-row"><b>Need</b><span>Design-minded builders, systems contributors, research partners</span></div>
+              <div class="info-row"><b>Format</b><span>Remote, async, open-source collaboration</span></div>
+              <div class="info-row"><b>Replace</b><span>This slot can become a real person, role, or hiring note</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="updates">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Blog / Updates</div>
+            <h2>Short notes from the lab.</h2>
+          </div>
+          <p class="lead">
+            These cards can be swapped for a blog feed later. For now they act as a lightweight changelog for public
+            building.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="post">
+            <div class="mono-label">Update</div>
+            <h3>Protocol-C is moving to edge-first testing</h3>
+            <p class="small">May 2026</p>
+            <p>
+              Tightened request handling, started measuring privacy overhead, and documented the first deployment path on
+              Cloudflare Workers.
+            </p>
+          </article>
+
+          <article class="post">
+            <div class="mono-label">Update</div>
+            <h3>Memex now stores structured long-term context</h3>
+            <p class="small">April 2026</p>
+            <p>
+              Added persistence for memory traces, retrieval filters, and a cleaner path for integrating with MCP-based AI
+              agents.
+            </p>
+          </article>
+
+          <article class="post">
+            <div class="mono-label">Update</div>
+            <h3>Jugni prototype focuses on self-hosted simplicity</h3>
+            <p class="small">March 2026</p>
+            <p>
+              Refined the app flow for private communities, simplified the stack, and documented how to swap placeholder
+              services for production ones.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Contact / Join</div>
+            <h2>Reach out, collaborate, or join the community.</h2>
+          </div>
+          <p class="lead">
+            This section is meant to capture inbound interest. Replace the email address and form endpoint when the lab
+            has a real newsletter or contact backend.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="contact-card">
+            <div class="contact-head">
+              <div class="avatar" aria-hidden="true">@</div>
+              <div>
+                <div class="mono-label">Links</div>
+                <h3>Find the lab online</h3>
+              </div>
+            </div>
+            <div class="contact-list">
+              <div class="info-row"><b>GitHub</b><a class="link-inline" href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer">github.com/Shivoham-Lab</a></div>
+              <div class="info-row"><b>LinkedIn</b><a class="link-inline" href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer">linkedin.com/company/shivoham-lab</a></div>
+              <div class="info-row"><b>Email</b><a class="link-inline" href="mailto:hello@shivoham-lab.github.io">hello@shivoham-lab.github.io</a></div>
+            </div>
+            <p class="fineprint">
+              Replace the email address with a real inbox before launch. If you add a form service later, point the form
+              action there.
+            </p>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-head">
+              <div class="avatar" aria-hidden="true">+</div>
+              <div>
+                <div class="mono-label">Join the community</div>
+                <h3>Get lab updates</h3>
+              </div>
+            </div>
+            <p>
+              Leave your email to hear about releases, research notes, and collaboration openings.
+            </p>
+            <form class="form" id="joinForm" novalidate>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              </div>
+              <button class="btn btn-primary" type="submit">Join the community</button>
+              <p class="fineprint" id="formMessage">
+                This is a frontend-only capture form. Replace with your newsletter or mailing backend when ready.
+              </p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Shivoham Lab</strong>
+        <div class="fineprint">Independent research lab · Built in public · Open source first</div>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:hello@shivoham-lab.github.io">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileNavShell = document.getElementById('mobileNavShell');
+    const navLinks = Array.from(document.querySelectorAll('#siteNav a'));
+    const joinForm = document.getElementById('joinForm');
+    const emailInput = document.getElementById('email');
+    const formMessage = document.getElementById('formMessage');
+
+    function closeMobileNav() {
+      mobileNavShell.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMobileNav() {
+      mobileNavShell.classList.add('open');
+      navToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = mobileNavShell.classList.contains('open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileNav();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!mobileNavShell.classList.contains('open')) return;
+      const clickedInside = mobileNavShell.contains(event.target) || navToggle.contains(event.target);
+      if (!clickedInside) closeMobileNav();
+    });
+
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, {
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0.01,
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    joinForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email || !emailInput.checkValidity()) {
+        formMessage.textContent = 'Please enter a valid email address.';
+        formMessage.style.color = '#ffb2a4';
+        emailInput.focus();
+        return;
+      }
+
+      formMessage.textContent = `Thanks. We would capture ${email} in your mailing backend here.`;
+      formMessage.style.color = '#a9f0b3';
+      joinForm.reset();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760) closeMobileNav();
+    });
+  </script>
+</body>
+</html>
