@@ -161,10 +161,13 @@
       background: linear-gradient(145deg, rgba(232, 160, 69, 0.2), rgba(232, 160, 69, 0.05));
       border: 1px solid rgba(232, 160, 69, 0.25);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      color: var(--accent-strong);
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      letter-spacing: -0.08em;
+      overflow: hidden;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .brand-text {
@@ -840,7 +843,9 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#home" aria-label="Shivoham Lab home">
-        <div class="brand-mark">SL</div>
+        <div class="brand-mark">
+          <img src="public/s.png" alt="" aria-hidden="true" />
+        </div>
         <div class="brand-text">
           <strong>Shivoham Lab</strong>
           <span>Indie research lab</span>
