@@ -6,6 +6,8 @@
   <meta name="description" content="Shivoham Lab is an independent research lab building open-source tools, AI systems, and real-world developer products." />
   <meta name="theme-color" content="#0b0d10" />
   <title>Shivoham Lab</title>
+  <link rel="icon" type="image/png" href="public/s.png" />
+  <link rel="apple-touch-icon" href="public/s.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -138,7 +140,9 @@
     }
 
     .topbar-inner {
-      height: var(--nav-height);
+      min-height: var(--nav-height);
+      height: auto;
+      padding: 12px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -147,27 +151,22 @@
 
     .brand {
       display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
       min-width: 0;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, rgba(232, 160, 69, 0.2), rgba(232, 160, 69, 0.05));
-      border: 1px solid rgba(232, 160, 69, 0.25);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      overflow: hidden;
-    }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      width: 50px;
+      height: auto;
+      display: block;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      overflow: visible;
     }
 
     .brand-text {
@@ -177,13 +176,13 @@
     }
 
     .brand-text strong {
-      font-size: 1rem;
+      font-size: 0.96rem;
       letter-spacing: -0.03em;
     }
 
     .brand-text span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
     }
 
@@ -843,12 +842,10 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#home" aria-label="Shivoham Lab home">
-        <div class="brand-mark">
-          <img src="public/s.png" alt="" aria-hidden="true" />
-        </div>
+        <img class="brand-mark" src="public/s.png" alt="" aria-hidden="true" />
         <div class="brand-text">
-          <strong>Shivoham Lab</strong>
-          <span>Indie research lab</span>
+          <strong>Shivoham Labs</strong>
+          <span>Indie Research Lab</span>
         </div>
       </a>
 
@@ -902,7 +899,7 @@
           <div class="asidesurface">
             <div class="mono-label">Shivoham</div>
             <p class="statement">
-              शिवोऽहम् means “I am Shiv” in Sanskrit. The name reflects a lab mindset rooted in clarity, discipline,
+              शिवोहम् means “I am Shiv” in Sanskrit. The name reflects a lab mindset rooted in clarity, discipline,
               and building useful things in the open.
             </p>
             <div class="chip-row">
@@ -955,7 +952,7 @@
           <article class="panel">
             <h3>Meaning of Shivoham</h3>
             <p>
-              Shivoham (शिवोऽहम्) is Sanskrit for “I am Shiv.” Here it signals a disciplined builder identity: clear
+              Shivoham (शिवोहम्) is Sanskrit for “I am Shiv.” Here it signals a disciplined builder identity: clear
               intent, calm execution, and useful output.
             </p>
           </article>
