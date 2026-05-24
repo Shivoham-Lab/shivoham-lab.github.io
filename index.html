@@ -663,6 +663,30 @@
       display: none;
     }
 
+    .founder-card {
+      position: relative;
+      padding-bottom: 74px;
+    }
+
+    .know-more-btn {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      color: var(--text);
+      cursor: pointer;
+       transition: all 180ms ease;
+    }
+    
+    .know-more-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(232, 160, 69, 0.22);
+    }
+
     .form {
       display: grid;
       gap: 12px;
@@ -1139,9 +1163,7 @@
         </div>
 
         <div class="grid-2">
-          <article class="team-card center">
-            <div class="team-head">
-              <div class="avatar" aria-hidden="true">S</div>
+          <article class="team-card founder-card">
               <div>
                 <div class="mono-label">Founder &amp; Builder</div>
                 <h3>Shouraya</h3>
@@ -1151,14 +1173,22 @@
               Also known as Shivoham. CS undergrad at MIT Bengaluru (2024–2028) and the person driving product, research,
               and engineering at the lab.
             </p>
-            <div class="team-meta">
+            <div class="team-meta" id="founderSocials">
+              <div class="info-row"><b>Instagram</b><a href="https://www.instagram.com/shourayasharma07/" target="_blank" rel="noreferrer" class="link-inline">@shourayasharma07</a></div>
+              <div class="info-row"><b>LinkedIn</b><a href="https://www.linkedin.com/in/shouraya-sharma/" target="_blank" rel="noreferrer" class="link-inline">/in/shouraya-sharma</a></div>
+              <div class="info-row"><b>GitHub</b><a href="https://github.com/Shouraya-07" target="_blank" rel="noreferrer" class="link-inline">Shouraya-07</a></div>
+            </div>
+            
+            <div class="team-meta" id="founderMoreInfo" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line);">
               <div class="info-row"><b>Role</b><span>Founder &amp; Builder</span></div>
               <div class="info-row"><b>Focus</b><span>AI, systems, products, open source</span></div>
               <div class="info-row"><b>Location</b><span>Bengaluru, India</span></div>
             </div>
+
+            <button id="knowMoreBtn" class="know-more-btn">Know More</button>
           </article>
 
-          <article class="team-card">
+          <article class="team-card center">
             <div class="team-head">
               <div class="avatar" aria-hidden="true">?</div>
               <div>
@@ -1239,6 +1269,7 @@
     const joinForm = document.getElementById('joinForm');
     const emailInput = document.getElementById('email');
     const formMessage = document.getElementById('formMessage');
+    const knowMoreBtn = document.getElementById('knowMoreBtn');
 
     function closeMobileNav() {
       mobileNavShell.classList.remove('open');
@@ -1288,6 +1319,21 @@
     });
 
     sections.forEach((section) => observer.observe(section));
+
+    const founderMoreInfo = document.getElementById('founderMoreInfo');
+
+    if (knowMoreBtn && founderMoreInfo) {
+      knowMoreBtn.addEventListener('click', () => {
+        const isHidden = founderMoreInfo.style.display === 'none';
+        if (isHidden) {
+          founderMoreInfo.style.display = 'block';
+          knowMoreBtn.textContent = 'Show Less';
+        } else {
+          founderMoreInfo.style.display = 'none';
+          knowMoreBtn.textContent = 'Know More';
+        }
+      });
+    }
 
     if (joinForm) {
       joinForm.addEventListener('submit', (event) => {
