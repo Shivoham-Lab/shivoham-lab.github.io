@@ -859,7 +859,7 @@
           <a href="#projects">Projects</a>
           <a href="#research">Research</a>
           <a href="#team">Team</a>
-          <a href="#updates">Updates</a>
+          
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -1160,52 +1160,7 @@
       </div>
     </section>
 
-    <section class="section" id="updates">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="eyebrow">Blog / Updates</div>
-            <h2>Short notes from the lab.</h2>
-          </div>
-          <p class="lead">
-            These cards can be swapped for a blog feed later. For now they act as a lightweight changelog for public
-            building.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="post">
-            <div class="mono-label">Update</div>
-            <h3>Protocol-C is moving to edge-first testing</h3>
-            <p class="small">May 2026</p>
-            <p>
-              Tightened request handling, started measuring privacy overhead, and documented the first deployment path on
-              Cloudflare Workers.
-            </p>
-          </article>
-
-          <article class="post">
-            <div class="mono-label">Update</div>
-            <h3>Memex now stores structured long-term context</h3>
-            <p class="small">April 2026</p>
-            <p>
-              Added persistence for memory traces, retrieval filters, and a cleaner path for integrating with MCP-based AI
-              agents.
-            </p>
-          </article>
-
-          <article class="post">
-            <div class="mono-label">Update</div>
-            <h3>Jugni prototype focuses on self-hosted simplicity</h3>
-            <p class="small">March 2026</p>
-            <p>
-              Refined the app flow for private communities, simplified the stack, and documented how to swap placeholder
-              services for production ones.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="section" id="contact">
       <div class="container">
@@ -1214,10 +1169,7 @@
             <div class="eyebrow">Contact / Join</div>
             <h2>Reach out, collaborate, or join the community.</h2>
           </div>
-          <p class="lead">
-            This section is meant to capture inbound interest. Replace the email address and form endpoint when the lab
-            has a real newsletter or contact backend.
-          </p>
+          
         </div>
 
         <div class="grid-2">
@@ -1234,10 +1186,6 @@
               <div class="info-row"><b>LinkedIn</b><a class="link-inline" href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer">linkedin.com/company/shivoham-lab</a></div>
               <div class="info-row"><b>Email</b><a class="link-inline" href="mailto:shivoham.s27@gmail.com">shivoham.s27@gmail.com</a></div>
             </div>
-            <p class="fineprint">
-              Replace the email address with a real inbox before launch. If you add a form service later, point the form
-              action there.
-            </p>
           </article>
 
           <article class="contact-card">
@@ -1249,18 +1197,11 @@
               </div>
             </div>
             <p>
-              Leave your email to hear about releases, research notes, and collaboration openings.
+              To join the community and receive updates, please fill out our Google Form.
             </p>
-            <form class="form" id="joinForm" novalidate>
-              <div class="field">
-                <label for="email">Email address</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
-              </div>
-              <button class="btn btn-primary" type="submit">Join the community</button>
-              <p class="fineprint" id="formMessage">
-                This is a frontend-only capture form. Replace with your newsletter or mailing backend when ready.
-              </p>
-            </form>
+            <p>
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdOYACz0H8kzhpcYrXPnnTZPSnAYjGjzwD37gGyC9QPhkZ-jg/viewform?usp=publish-editor" target="_blank" rel="noreferrer">Join the community</a>
+            </p>
           </article>
         </div>
       </div>
@@ -1338,20 +1279,22 @@
 
     sections.forEach((section) => observer.observe(section));
 
-    joinForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const email = emailInput.value.trim();
-      if (!email || !emailInput.checkValidity()) {
-        formMessage.textContent = 'Please enter a valid email address.';
-        formMessage.style.color = '#ffb2a4';
-        emailInput.focus();
-        return;
-      }
+    if (joinForm) {
+      joinForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = emailInput.value.trim();
+        if (!email || !emailInput.checkValidity()) {
+          formMessage.textContent = 'Please enter a valid email address.';
+          formMessage.style.color = '#ffb2a4';
+          emailInput.focus();
+          return;
+        }
 
-      formMessage.textContent = `Thanks. We would capture ${email} in your mailing backend here.`;
-      formMessage.style.color = '#a9f0b3';
-      joinForm.reset();
-    });
+        formMessage.textContent = `Thanks. We would capture ${email} in your mailing backend here.`;
+        formMessage.style.color = '#a9f0b3';
+        joinForm.reset();
+      });
+    }
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 760) closeMobileNav();
