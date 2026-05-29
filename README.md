@@ -77,7 +77,7 @@ Not a job. Not an internship. Just people who:
 - Are interested in writing or co-authoring research
 - Want to build something real
 
-> Reach out → [LinkedIn](https://linkedin.com/company/shivoham-labs) · [Email](mailto:hello@shivohamlab.dev)
+> Reach out → [LinkedIn](https://linkedin.com/company/shivoham-labs) · [Email](mailto:shivoham.s27@gmail.com)
 
 ---
 
