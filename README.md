@@ -20,22 +20,22 @@
 *Shivoham (शिवोऽहम्) — "I am that." Sanskrit. Identity. Intent. Purpose.*
 
 [![Website](https://img.shields.io/badge/website-shivoham--lab.github.io-e8a045?style=flat-square&logo=github)](https://shivoham-lab.github.io)
-[![LinkedIn](https://img.shields.io/badge/linkedin-Shivoham_Labs-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/company/shivoham-lab)
+[![LinkedIn](https://img.shields.io/badge/linkedin-Shivoham_Labs-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/company/shivoham-labs)
 [![GitHub Org](https://img.shields.io/badge/github-Shivoham--Lab-181717?style=flat-square&logo=github)](https://github.com/Shivoham-Lab)
 
 </div>
 
 ---
 
-## ` what we are `
+## ` What we are `
 
-Shivoham Lab is an **independent research lab** founded by [Shouraya Sharma](https://linkedin.com/in/shouraya). We explore practical AI, systems engineering, and developer tools — open-source by default, built in public.
+Shivoham Lab is an **independent research lab** founded by [Shouraya Sharma](https://linkedin.com/in/shouraya-sharma/). We explore practical AI, systems engineering, and developer tools — open-source by default, built in public.
 
 We're not a company. Not a startup. Just a small lab shipping real tools, running experiments, and occasionally publishing research — with anyone who wants to build something worth building.
 
 ---
 
-## ` what we build `
+## ` What we build `
 
 ```
 ┌─────────────────────┬──────────────────────────────────────────────────┐
@@ -49,7 +49,7 @@ We're not a company. Not a startup. Just a small lab shipping real tools, runnin
 
 ---
 
-## ` how we work `
+## ` How we work `
 
 Every project moves through 5 stages:
 
@@ -67,7 +67,7 @@ Every project moves through 5 stages:
 
 ---
 
-## ` join us `
+## ` Join us `
 
 We're always looking for **curious builders and researchers** to collaborate with.
 
@@ -81,10 +81,10 @@ Not a job. Not an internship. Just people who:
 
 ---
 
-## ` research `
+## ` Research `
 
 Papers and technical writing are published under **Shivoham Lab** as affiliation.  
-Work in progress — watch this space.
+Work in progress  watch this space.
 
 ---
 
@@ -94,6 +94,6 @@ Work in progress — watch this space.
 · open source · built in public · independent ·
 ```
 
-*Founded by [Shouraya Sharma](https://linkedin.com/in/shouraya) · MIT Bengaluru 
+*Founded by [Shouraya Sharma](https://linkedin.com/in/shouraya-sharma/) · MIT Bengaluru 
 
 </div>
