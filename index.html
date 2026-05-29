@@ -554,6 +554,63 @@
       font-size: 12px;
     }
 
+    /* 5-step stage indicator */
+    .stages {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .stage-step {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stage-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    }
+
+    .stage-step .stage-label {
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1;
+      white-space:nowrap;
+    }
+
+    .stage-step.stage-active .stage-dot {
+      box-shadow: 0 8px 28px rgba(232,160,69,0.14);
+      outline: 3px solid rgba(232,160,69,0.08);
+    }
+
+    .explore-link {
+      color: var(--accent-strong);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* Compact status pill used for project/research quick status */
+    .stage-pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
     .link-inline {
       color: var(--accent-strong);
       font-weight: 600;
@@ -622,13 +679,18 @@
     }
 
     .avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      display: grid;
+      position: relative;
+      width: 64px;
+      height: 64px;
+      aspect-ratio: 1 / 1;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 50%;
+      display: inline-grid;
       place-items: center;
-      background: linear-gradient(145deg, rgba(232, 160, 69, 0.2), rgba(255, 255, 255, 0.03));
-      border: 1px solid rgba(232, 160, 69, 0.2);
+      background: linear-gradient(145deg, rgba(232, 160, 69, 0.12), rgba(255, 255, 255, 0.02));
+      border: 2px solid rgba(232, 160, 69, 0.16);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
       color: var(--accent-strong);
       font-family: 'JetBrains Mono', monospace;
       font-size: 18px;
@@ -636,11 +698,126 @@
       flex: 0 0 auto;
     }
 
+    .avatar-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 28%;
+      display: block;
+      border-radius: 0; /* let parent .avatar provide circular clipping */
+    }
+
+    /* Founder-specific layout to match reference card */
+    .founder-card {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      gap: 24px;
+      align-items: start;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .founder-card .fc-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .founder-card .fc-left .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 6px solid rgba(232,160,69,0.9);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .founder-card .handle {
+      background: rgba(255,255,255,0.03);
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .founder-card .fc-right {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .founder-card .header-box {
+      background: rgba(255,255,255,0.02);
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .founder-card h3 {
+      margin: 0;
+      font-size: 48px;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+
+    .founder-card .bio {
+      background: rgba(255,255,255,0.04);
+      padding: 18px 22px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .founder-card .social-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .founder-card .social-row .fc-icon {
+      width: 56px;
+      height: 56px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .founder-card .social-row .fc-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
     .team-head,
     .contact-head {
       display: flex;
       gap: 16px;
       align-items: center;
+    }
+
+    .contact-card .contact-head {
+      margin-bottom: 12px;
+    }
+
+    .contact-card .contact-list {
+      margin-top: 20px;
+    }
+
+    .contact-badge svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+      fill: var(--accent-strong);
     }
 
     /* Centered team card for 'Revealing Soon ...' */
@@ -759,6 +936,62 @@
 
     .socials a:hover {
       color: var(--accent-strong);
+    }
+
+    /* Footer icon links */
+    .footer .footer-icons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer .footer-icon {
+      width: 40px;
+      height: 40px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .footer .footer-icon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    }
+
+    .footer .footer-icon svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      fill: white;
+    }
+
+    /* Contact card icons */
+    .contact-list .contact-icon {
+      width: 54px;
+      height: 54px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      margin-right: 0;
+    }
+
+    .contact-list .contact-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+      fill: white;
+    }
+
+    .contact-icons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
     }
 
     .mobile-nav-shell {
@@ -1029,46 +1262,18 @@
             <div class="eyebrow">Projects</div>
             <h2>Products and systems the lab is building.</h2>
           </div>
-          <p class="lead">
-            Replace the placeholder links and descriptions as projects evolve. The structure is intentionally simple so it
-            can scale from one-person prototypes to maintained open-source releases.
-          </p>
         </div>
 
         <div class="grid-3">
           <article class="card">
-            <div class="mono-label">AI / Infra</div>
-            <h3>Protocol-C</h3>
-            <p>
-              A Cloudflare Workers privacy layer for AI-facing traffic, designed to reduce data exposure while keeping
-              request routing fast and deployable at the edge.
-            </p>
-            <div class="tag-list">
-              <span class="tag">Cloudflare Workers</span>
-              <span class="tag">Privacy</span>
-              <span class="tag">Edge systems</span>
-            </div>
-            <div class="meta-line">
-              <span class="small">Status: active prototype</span>
-              <a class="link-inline" href="#contact">Request access</a>
-            </div>
-          </article>
-
-          <article class="card">
             <div class="mono-label">AI / Memory</div>
             <h3>Memex</h3>
             <p>
-              An MCP-based persistent memory server for AI workflows. Built for agents and assistants that need long-term
+              An MCP based persistent memory server for AI workflows. Built for agents and assistants that need long term
               context, retrieval, and structured recall.
             </p>
-            <div class="tag-list">
-              <span class="tag">MCP</span>
-              <span class="tag">Persistence</span>
-              <span class="tag">AI tooling</span>
-            </div>
             <div class="meta-line">
-              <span class="small">Status: open-source core</span>
-              <a class="link-inline" href="#research">Read related work</a>
+              <span class="stage-pill" style="background:#3B82F6">Prototyping</span>
             </div>
           </article>
 
@@ -1076,17 +1281,22 @@
             <div class="mono-label">Community / Media</div>
             <h3>Jugni</h3>
             <p>
-              A self-hosted community music streaming app. The goal is to give small communities a simple, privacy-aware
+              A self-hosted community music streaming app. The goal is to give small communities a simple, privacy aware
               way to share and play music without platform lock-in.
             </p>
-            <div class="tag-list">
-              <span class="tag">Self-hosted</span>
-              <span class="tag">Community app</span>
-              <span class="tag">Web platform</span>
-            </div>
             <div class="meta-line">
-              <span class="small">Status: design + build phase</span>
-              <a class="link-inline" href="#contact">Join build</a>
+              <span class="stage-pill" style="background:#6B7280">Ideation</span>
+            </div>
+          </article>
+
+          <article class="card coming-soon-card" style="background:#ffffff; color:#000; display:flex; flex-direction:column; justify-content:space-between; align-items:center; padding:20px;">
+            <div style="text-align:center; padding:8px 12px 0; width:100%;">
+              <div style="font-weight:900; letter-spacing:0.02em; color:#ffb35c; font-size:34px;">More Coming Soon...</div>
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; padding-top:12px; padding-bottom:8px; width:100%;">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOYACz0H8kzhpcYrXPnnTZPSnAYjGjzwD37gGyC9QPhkZ-jg/viewform?usp=publish-editor" target="_blank" rel="noreferrer" aria-label="Join the community">
+                <img src="public/Plus.png" alt="More projects" style="width:120px; height:120px; object-fit:contain; display:block;" />
+              </a>
             </div>
           </article>
         </div>
@@ -1098,28 +1308,11 @@
         <div class="section-header">
           <div>
             <div class="eyebrow">Research</div>
-            <h2>Selected papers and publications.</h2>
+            <h2>Papers and Publications.</h2>
           </div>
-          <p class="lead">
-            Replace these entries with final citations, DOI links, and preprint URLs. The cards are formatted for easy
-            editing and strong legibility on dark backgrounds.
-          </p>
         </div>
 
         <div class="timeline">
-          <article class="timeline-item">
-            <header>
-              <strong>Memex: Persistent Memory for Long-Horizon AI Workflows</strong>
-              <time>2026</time>
-            </header>
-            <div class="venue">Workshop / preprint</div>
-            <p>
-              A systems-oriented approach to storing, retrieving, and governing agent memory across tasks, sessions, and
-              tools.
-            </p>
-            <a class="link-inline" href="#" aria-label="Placeholder link for Memex paper">Replace with paper link</a>
-          </article>
-
           <article class="timeline-item">
             <header>
               <strong>Protocol-C: Privacy Controls for Edge AI Requests</strong>
@@ -1130,20 +1323,9 @@
               A compact edge middleware design for minimizing sensitive data leakage in AI request pipelines while keeping
               latency low.
             </p>
-            <a class="link-inline" href="#" aria-label="Placeholder link for Protocol-C paper">Replace with paper link</a>
-          </article>
-
-          <article class="timeline-item">
-            <header>
-              <strong>Lightweight Community Media Systems for Self-Hosted Networks</strong>
-              <time>2025</time>
-            </header>
-            <div class="venue">Systems / applied research</div>
-            <p>
-              A study of resilient, self-hosted media delivery with emphasis on usability, moderation, and deployment
-              simplicity for small communities.
-            </p>
-            <a class="link-inline" href="#" aria-label="Placeholder link for community media paper">Replace with paper link</a>
+            <div class="meta-line">
+              <span class="stage-pill" style="background:#3B82F6">Prototyping</span>
+            </div>
           </article>
         </div>
       </div>
@@ -1164,30 +1346,37 @@
 
         <div class="grid-2">
           <article class="team-card founder-card">
-            <div class="team-head">
-              <div class="avatar" aria-hidden="true">S</div>
-              <div>
+            <div class="fc-left">
+              <div class="avatar" aria-hidden="true">
+                <img src="public/Shouraya.jpeg" alt="Shouraya Sharma" class="avatar-img" />
+              </div>
+              <div class="handle">Shivoham_07</div>
+              <div class="social-row">
+                <a class="fc-icon" href="https://www.linkedin.com/in/shouraya-sharma/" target="_blank" rel="noreferrer" style="background:#0077b5;">
+                  <svg viewBox="0 0 24 24" fill="white"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7h-3.56V9h3.42v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29z"/></svg>
+                </a>
+                <a class="fc-icon" href="https://www.instagram.com/shourayasharma07/" target="_blank" rel="noreferrer" style="background: linear-gradient(45deg,#f09433,#e6683c,#dc2743);">
+                  <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.67 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.25-.15-4.77-1.69-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.15-3.23 1.67-4.77 4.92-4.92 1.27-.06 1.64-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-4.27.2-5.78 1.71-5.98 5.98C1.01 8.33 1 8.74 1 12s.01 3.67.07 4.95c.2 4.27 1.71 5.78 5.98 5.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.27-.2 5.78-1.71 5.98-5.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.27-1.71-5.78-5.98-5.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zm0 10.16A4 4 0 1116 12a4 4 0 01-4 4zm5.23-11.4A1.44 1.44 0 1115.79 3.16 1.44 1.44 0 0117.23 4.6z"/></svg>
+                </a>
+                <a class="fc-icon" href="https://github.com/Shouraya-07" target="_blank" rel="noreferrer" style="background:white;">
+                  <svg viewBox="0 0 24 24" fill="black"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .8 2.8.6 3.5.4 0-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="fc-right">
+              <div class="header-box">
                 <div class="mono-label">Founder &amp; Builder</div>
                 <h3>Shouraya Sharma</h3>
               </div>
-            </div>
-            <p>
-              Also known as Shivoham. CS undergrad at MIT Bengaluru and the person driving product, research,
-              and engineering at the lab.
-            </p>
-            <div class="team-meta" id="founderSocials">
-              <div class="info-row"><b>Instagram</b><a href="https://www.instagram.com/shourayasharma07/" target="_blank" rel="noreferrer" class="link-inline">@shourayasharma07</a></div>
-              <div class="info-row"><b>LinkedIn</b><a href="https://www.linkedin.com/in/shouraya-sharma/" target="_blank" rel="noreferrer" class="link-inline">/in/shouraya-sharma</a></div>
-              <div class="info-row"><b>GitHub</b><a href="https://github.com/Shouraya-07" target="_blank" rel="noreferrer" class="link-inline">Shouraya-07</a></div>
-            </div>
 
-            <div class="team-meta" id="founderMoreInfo" style="display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line);">
-              <div class="info-row"><b>Role</b><span>Founder &amp; Builder</span></div>
-              <div class="info-row"><b>Focus</b><span>AI, Research, Developing Tools, Open Source</span></div>
-              <div class="info-row"><b>Location</b><span>BLR | CHD | PTK</span></div>
-            </div>
+              <div class="bio">
+                Also known as Shivoham. CS undergrad at MIT Bengaluru and the person driving product, research,
+                and engineering at the lab.
+              </div>
 
-            <button id="knowMoreBtn" class="know-more-btn">Know More</button>
+              
+            </div>
           </article>
 
           <article class="team-card center">
@@ -1217,22 +1406,42 @@
         <div class="grid-2">
           <article class="contact-card">
             <div class="contact-head">
-              <div class="avatar" aria-hidden="true">@</div>
+              <div class="avatar contact-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9.4 17.2c-.6.4-1.3.6-2 .6-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2c.7 0 1.4.2 2 .6l1.1-1.6a6.2 6.2 0 0 0-3.1-.8A6.2 6.2 0 0 0 1.2 13.6a6.2 6.2 0 0 0 9.3 5.4l-1.1-1.8z"/>
+                  <path d="M19.8 3.2h-6.6a2 2 0 0 0-2 2v13.6a2 2 0 0 0 2 2h6.6a2 2 0 0 0 2-2V5.2a2 2 0 0 0-2-2zm0 15.6h-6.6V5.2h6.6v13.6z"/>
+                  <path d="M14.6 7.4h3.8v2h-3.8zm0 3.6h3.8v2h-3.8zm0 3.6h3.8v2h-3.8z"/>
+                </svg>
+              </div>
               <div>
                 <div class="mono-label">Links</div>
                 <h3>Find the lab online</h3>
               </div>
             </div>
-            <div class="contact-list">
-              <div class="info-row"><b>GitHub</b><a class="link-inline" href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer">github.com/Shivoham-Lab</a></div>
-              <div class="info-row"><b>LinkedIn</b><a class="link-inline" href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer">linkedin.com/company/shivoham-lab</a></div>
-              <div class="info-row"><b>Email</b><a class="link-inline" href="mailto:shivoham.s27@gmail.com">shivoham.s27@gmail.com</a></div>
+              <div class="contact-list">
+              <div class="contact-icons">
+                <a class="contact-icon" href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.76-1.605-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.479 5.92.43.372.815 1.102.815 2.222 0 1.606-.015 2.896-.015 3.286 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a class="contact-icon" href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7h-3.56V9h3.42v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29z"/></svg>
+                </a>
+                <a class="contact-icon" href="mailto:shivoham.s27@gmail.com" aria-label="Email">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+              </div>
             </div>
           </article>
 
           <article class="contact-card">
             <div class="contact-head">
-              <div class="avatar" aria-hidden="true">+</div>
+              <div class="avatar contact-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0 7a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                  <path d="M4.5 20.5v-1.2a6 6 0 0 1 6-6h3a6 6 0 0 1 6 6v1.2h-2v-1.2a4 4 0 0 0-4-4h-3a4 4 0 0 0-4 4v1.2h-2z"/>
+                  <path d="M19 6.5h-2v2h-2v2h2v2h2v-2h2v-2h-2z"/>
+                </svg>
+              </div>
               <div>
                 <div class="mono-label">Join the community</div>
                 <h3>Get lab updates</h3>
@@ -1257,9 +1466,17 @@
         <div class="fineprint">Independent research lab · Built in public · Open source first</div>
       </div>
       <div class="socials" aria-label="Social links">
-        <a href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="mailto:shivoham.s27@gmail.com">Email</a>
+        <div class="footer-icons">
+          <a class="footer-icon" href="https://github.com/Shivoham-Lab" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.76-1.605-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.874.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.479 5.92.43.372.815 1.102.815 2.222 0 1.606-.015 2.896-.015 3.286 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a class="footer-icon" href="https://linkedin.com/company/shivoham-lab" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7h-3.56V9h3.42v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29z"/></svg>
+          </a>
+          <a class="footer-icon" href="mailto:shivoham.s27@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -1271,7 +1488,6 @@
     const joinForm = document.getElementById('joinForm');
     const emailInput = document.getElementById('email');
     const formMessage = document.getElementById('formMessage');
-    const knowMoreBtn = document.getElementById('knowMoreBtn');
 
     function closeMobileNav() {
       mobileNavShell.classList.remove('open');
@@ -1322,20 +1538,7 @@
 
     sections.forEach((section) => observer.observe(section));
 
-    const founderMoreInfo = document.getElementById('founderMoreInfo');
-
-    if (knowMoreBtn && founderMoreInfo) {
-      knowMoreBtn.addEventListener('click', () => {
-        const isHidden = founderMoreInfo.style.display === 'none';
-        if (isHidden) {
-          founderMoreInfo.style.display = 'block';
-          knowMoreBtn.textContent = 'Show Less';
-        } else {
-          founderMoreInfo.style.display = 'none';
-          knowMoreBtn.textContent = 'Know More';
-        }
-      });
-    }
+    
 
     if (joinForm) {
       joinForm.addEventListener('submit', (event) => {
