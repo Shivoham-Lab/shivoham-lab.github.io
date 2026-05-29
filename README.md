@@ -20,7 +20,7 @@
 *Shivoham (शिवोऽहम्) — "I am that." Sanskrit. Identity. Intent. Purpose.*
 
 [![Website](https://img.shields.io/badge/website-shivoham--lab.github.io-e8a045?style=flat-square&logo=github)](https://shivoham-lab.github.io)
-[![LinkedIn](https://img.shields.io/badge/linkedin-Shivoham_Lab-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/company/shivoham-lab)
+[![LinkedIn](https://img.shields.io/badge/linkedin-Shivoham_Labs-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/company/shivoham-lab)
 [![GitHub Org](https://img.shields.io/badge/github-Shivoham--Lab-181717?style=flat-square&logo=github)](https://github.com/Shivoham-Lab)
 
 </div>
@@ -77,7 +77,7 @@ Not a job. Not an internship. Just people who:
 - Are interested in writing or co-authoring research
 - Want to build something real
 
-> Reach out → [LinkedIn](https://linkedin.com/company/shivoham-lab) · [Email](mailto:hello@shivohamlab.dev)
+> Reach out → [LinkedIn](https://linkedin.com/company/shivoham-labs) · [Email](mailto:hello@shivohamlab.dev)
 
 ---
 
